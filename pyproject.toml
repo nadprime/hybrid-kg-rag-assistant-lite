@@ -1,0 +1,26 @@
+[project]
+name = "hybrid_kg_rag_assistant"
+version = "0.1.0"
+description = "Hybrid Knowledge Graph RAG Multi-AI Agent Assistant"
+authors = [{ name = "Nomaan Ahmad", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.140.0,<1.0.0",
+    "google-generativeai>=0.8.6",
+    "neo4j>=5.28.1",
+    "streamlit>=1.46.1",
+]
+
+[project.scripts]
+hybrid_kg_rag_assistant = "hybrid_kg_rag_assistant.main:run"
+run_crew = "hybrid_kg_rag_assistant.main:run"
+train = "hybrid_kg_rag_assistant.main:train"
+replay = "hybrid_kg_rag_assistant.main:replay"
+test = "hybrid_kg_rag_assistant.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

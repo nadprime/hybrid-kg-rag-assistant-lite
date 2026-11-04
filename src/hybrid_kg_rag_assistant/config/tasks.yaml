@@ -1,0 +1,86 @@
+hybrid_data_retrieval_task:
+  description: >
+    Efficiently retrieve targeted information about {query} within the context
+    of an ongoing conversation, using all available tools to enable comprehensive,
+    contextually-aware responses:
+
+    1. Consider the conversational context — understand if this is a follow-up
+       question, clarification request, or a new topic in the ongoing dialogue.
+    2. Perform focused semantic searches using the RAG tool with strategic
+       query variations that capture information directly relevant to {query}
+       while being mindful of conversation flow.
+    3. **IMPORTANT**: Always use the Local Knowledge Graph tool to find
+       structured satellite data, missions, and keyword-connected entities.
+       It contains detailed MOSDAC satellite information organised as a
+       keyword co-occurrence graph built from the scraped data.
+    4. Cross-reference information between RAG and local knowledge graph
+       results to provide comprehensive context that builds upon any previous
+       conversation history.
+    5. Validate information quality and identify any gaps or inconsistencies.
+    6. Prioritise information that directly addresses the current question
+       while maintaining conversation coherence and natural dialogue flow.
+
+    Focus on gathering sufficient, high-quality information from BOTH tools
+    to enable conversational, contextually-aware responses that feel natural
+    in multi-turn dialogue.
+  expected_output: >
+    A comprehensive information package optimised for conversational responses
+    containing:
+    - Essential facts and key details from RAG searches about {query}
+    - Structured satellite/mission data and keyword relationships from the
+      local knowledge graph
+    - Cross-referenced and validated information from multiple sources
+    - Supporting evidence and contextual connections relevant to the conversation
+    - Quality assessment of retrieved information
+    - Conversation-aware insights that build upon dialogue context
+    - Identified gaps where additional context might be needed for conversation flow
+    - Structured data ready for natural, conversational response synthesis
+  agent: hybrid_data_retriever
+
+response_synthesis_task:
+  description: >
+    Create a comprehensive, conversational response about {query} that naturally
+    fits within the ongoing dialogue context. Structure the response to maintain
+    conversation flow while providing thorough, contextually-aware answers that
+    feel like natural conversation turns.
+
+    Requirements for Conversational Responses:
+    - Maintain natural conversation flow and tone appropriate for multi-turn dialogue
+    - Reference previous context when relevant to show conversation awareness
+    - Lead with direct answers that acknowledge the conversation context
+    - Organise information in a conversational yet informative manner
+    - Include sufficient detail to be authoritative without overwhelming the dialogue
+    - Use transitional phrases and conversational connectors when appropriate
+    - Maintain a professional yet approachable tone suitable for ongoing conversation
+    - Ensure responses feel like natural dialogue turns rather than formal reports
+  expected_output: >
+    A comprehensive, conversational response optimised for multi-turn dialogue
+    that includes:
+
+    **Conversational Opening**
+    - Natural acknowledgment of the query within conversation context
+    - Direct answer that shows understanding of the dialogue flow
+    - Clear, conversational summary of key points
+
+    **Main Information** (structured conversationally)
+    - Comprehensive explanation presented in dialogue-friendly format
+    - Technical details integrated naturally into conversational flow
+    - Important relationships and connections explained conversationally
+    - Historical background woven into the narrative when it adds value
+
+    **Practical Context** (when applicable)
+    - Real-world applications discussed in accessible, conversational terms
+    - Benefits and limitations presented naturally
+    - Examples and case studies shared as part of the dialogue
+    - Comparisons with related concepts when they enhance understanding
+
+    **Conversational Closing**
+    - Natural summary of key takeaways
+    - Invitation for follow-up questions or clarifications
+    - Smooth transition that maintains conversation openness
+
+    The response should feel like a natural, informative conversation turn that
+    maintains dialogue flow while being authoritative, complete, and immediately
+    useful within the ongoing conversation about {query}.
+  agent: response_synthesizer
+  context: [hybrid_data_retrieval_task]

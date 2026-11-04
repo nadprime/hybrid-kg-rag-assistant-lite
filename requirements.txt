@@ -1,0 +1,7 @@
+streamlit>=1.46.1
+crewai[tools]>=0.140.0,<1.0.0
+google-generativeai>=0.8.6
+networkx>=3.3
+pandas>=2.2.0
+pyvis>=0.3.2
+python-dotenv>=1.0.0

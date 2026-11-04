@@ -1,0 +1,66 @@
+# ===========================================================================
+# .gitignore — Hybrid Knowledge Graph RAG Assistant
+# ===========================================================================
+
+# Environment variables & secrets (NEVER commit these)
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & linting
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# IDE & OS-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+
+# CrewAI & Vector DB runtime storage
+**/crewai_storage/
+**/chroma_db/
+*.sqlite3
+*.db
+latest_kickoff_task_output.txt
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+.gitattributes
